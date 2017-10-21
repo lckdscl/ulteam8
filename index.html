@@ -36,6 +36,7 @@
 			background-color: #262628;
 			overflow: hidden;
 			box-shadow: 3px 3px 6px #000;
+			position: relative;
 		}
 		
         .graph .axis {
@@ -106,20 +107,44 @@
 			padding: 20px;
 			background-color: #262628;
 			box-shadow: 3px 3px 6px #000;
+			position:relative;
 		}
+		#dj{
+			position: absolute;
+			top: 250px;
+			left: 275px;
+		}
+		
+		.legend{
+		position: absolute;
+		top: 50px;
+		left: 20px;
+		
+		}
+		
+		#heartbeat{
+			color: pink;
+			}
+		#satisfaction{
+			color: yellow;
+			}
         </style>
     </head>
     <body>
 	<h1>DJ Dashboard</h1>
-        <div class="graph"><h2>Timeline</h2></div>
+        <div class="graph"><h2>Timeline</h2><p class="legend"><span id="heartbeat">HeartBeat</span><br><span id="satisfaction">Satisfaction</span></p></div>
 		<div class="barchart"><h2>Satisfaction</h2></div>
-		<div class="locator"><h2>Engagement</h2></div>
+		<div class="locator"><h2>Engagement</h2>
+		<img id="dj" src="images/dj.svg" width="100px">
+		
+		</div>
 
         <script src="http://d3js.org/d3.v3.min.js"></script>
 		<script src="js/lineChart.js"></script>
 		<script src="js/barChart.js"></script>
 		<script src="js/emotionsData.js"></script>
 		<script src="js/wifiData.js"></script>
+		<script src="js/heartRateData.js"></script>
 		<script src="js/locator.js"></script>
         <script>
 		
@@ -127,7 +152,9 @@
 
 		var foo = new EmotionsData;
 		var bar = new WifiData;
-
+		var boo = new HeartRateData;
+		
+		
 		function RollingAverage(data){
 			var sum = 0;
 			var num = data.slice(-5,).length;

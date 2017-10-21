@@ -10,8 +10,8 @@ var color = d3.scale.linear()
     .interpolate(function(a, b) { var i = d3.interpolateString(a, b); return function(t) { return d3.hsl(i(t)); }; });
 
 var arcBody = d3.svg.arc()
-    .startAngle(-0.2*Math.PI)
-    .endAngle(0.2*Math.PI)
+    .startAngle(-0.3*Math.PI)
+    .endAngle(0.3*Math.PI)
     .innerRadius(function(d) { return d.index * radius; })
     .outerRadius(function(d) { return (d.index + spacing) * radius; })
     .cornerRadius(6);
@@ -45,7 +45,7 @@ tick();
 d3.select(self.frameElement).style("height", height + "px");
 
 function tick() {
-	console.log(bar.data);
+	//console.log(bar.data);
   if (!document.hidden) field
       .each(function(d) { this._value = d.value; })
       .data(bar.data)

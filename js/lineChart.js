@@ -5,18 +5,18 @@ function LineChart(){
 		now = new Date(Date.now() - duration),
 		start = Date.now();
 
-	var width = document.documentElement.clientWidth-40-10,
+	var width = document.documentElement.clientWidth-40-40,
 		height = 300
 
 	var groups = {
-		current: {
+		heartrate: {
 			value: 0,
-			color: 'yellow',
+			color: 'pink',
 			data: d3.range(limit).map(function() {
 				return 0
 			})
 		},
-		target: {
+		emotion: {
 			value: 0,
 			color: 'yellow',
 			data: d3.range(limit).map(function() {
@@ -33,9 +33,8 @@ function LineChart(){
 	}
 
 	var x = d3.time.scale()
-		.domain([now - (limit - 2), now - duration])
+		.domain([now - (limit - 2) * duration, now - duration])
 		.range([0, width])
-
 	var y = d3.scale.linear()
 		.domain([0, 4])
 		.range([height, 0])
@@ -76,7 +75,17 @@ function LineChart(){
 		for (var name in groups) {
 			var group = groups[name]
 			//group.data.push(group.value) // Real values arrive at irregular intervals
-			group.data.push(RollingAverage(foo.data))
+			switch(name) {
+				case 'heartrate':
+					console.log(boo.data[boo.data.length-1].heartrate/180*3);
+					group.data.push(boo.data[boo.data.length-1].heartrate/180*3);
+					break;
+				case 'emotion':
+					group.data.push(RollingAverage(foo.data));
+					break;
+				default:
+					group.data.push(RollingAverage(foo.data));
+			} 
 			group.path.attr('d', line)
 		}
 

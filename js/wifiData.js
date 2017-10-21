@@ -18,7 +18,7 @@ function WifiData(){
 			var req = new XMLHttpRequest();
 			var query = "{$and:[{ \"timestamp\": { $gt: "+(wifidata.currentTimeStamp-10000)+" } },{ \"timestamp\": { $lt: "+wifidata.currentTimeStamp+" } }]}";
 			var useurl = "https://api.mlab.com/api/1/databases/ulteam8/collections/wifidata?q="+ query +"&s={\"timestamp\":-1}&apiKey=JwVaYcrf_BrvZ-n6UwurNFq4_PfP7q5G";
-			console.log(useurl);
+			//console.log(useurl);
 			req.open("GET", useurl, true);
 			req.setRequestHeader("Content-Type", "application/json"); 
 			req.addEventListener("load", function() {
