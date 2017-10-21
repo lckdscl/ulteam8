@@ -7,7 +7,7 @@ function BarChart(){
 			var formatPercent = d3.format(".0%");
 
 			var x = d3.scale.ordinal()
-				.rangeRoundBands([0, width], .1, 1);
+				.rangeBands([0, width]);
 
 			var y = d3.scale.linear()
 				.range([height, 0]);
@@ -30,7 +30,7 @@ function BarChart(){
 			var data = Histogram(foo.data);
 
 			  x.domain(data.map(function(d) { return d.emotion; }));
-			  y.domain([0, d3.max(data, function(d) { return d.number; })]);
+			  y.domain([0, 50]);
 
 			  svg.append("g")
 				  .attr("class", "x axis")
@@ -78,7 +78,7 @@ function BarChart(){
 				clearTimeout(sortTimeout);
 
 				console.log("test");
-				y.domain([0, d3.max(data, function(d) { return d.number; })]);
+				y.domain([0, d3.sum(data, function(d) { return d.number; })]);
 				
 				// Copy-on-write since tweens are evaluated after a delay.
 				var x0 = x.domain(data.sort(this.checked

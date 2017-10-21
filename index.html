@@ -95,21 +95,21 @@
 			var hist = [
 			{
 				emotion: "SuperHappy",
-				number: 4,
+				number: 0,
 				color: 'green'
 			},
 			{
 				emotion: "Moderate",
-				number: 5,
+				number: 0,
 				color: 'yellow'
 			},
 			{
 				emotion: "Disgusted",
-				number: 2,
+				number: 0,
 				color: 'red'
 			}			
 			];
-			data.slice(-100,).forEach(function(element){
+			data.slice(-50,).forEach(function(element){
 				switch(element.Value){
 					case 3:
 						hist[0].number+=1;
