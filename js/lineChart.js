@@ -5,7 +5,7 @@ function LineChart(){
 		now = new Date(Date.now() - duration),
 		start = Date.now();
 
-	var width = document.documentElement.clientWidth,
+	var width = document.documentElement.clientWidth-40-10,
 		height = 300
 
 	var groups = {

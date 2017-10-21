@@ -1,16 +1,43 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
-
+		<title>DJ Dashboard</title>
+        <meta charset="utf-8"><link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Bree+Serif" rel="stylesheet"> 
         <style>
         body {
 			margin: 0;
 			padding: 0;
-			background-color: #222;
+			xbackground-color: #121212;
+			background-image: url('images/background.png');
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			color: #fff;
         }
+		
+		h1{
+			margin:0;
+			padding: 20px 20px 20px 30px;
+			font-family: 'Bree Serif', cursive;
+			font-size: 175%;
+			color: #fff;
+			background: linear-gradient(#10a8ab,#0a696b);
+			xbackground-color: #10a8ab;
+			text-shadow: 2px 2px #0a696b;
+		}
 
+		h2{
+			margin: 0;
+			font-family: 'Roboto Condensed', sans-serif;
+			text-shadow: 2px 2px #111;
+		}
+		
+		.graph{
+			margin: 20px 20px 0 20px;
+			padding: 20px;
+			background-color: #262628;
+			overflow: hidden;
+			box-shadow: 3px 3px 6px #000;
+		}
+		
         .graph .axis {
             stroke-width: 1;
         }
@@ -62,21 +89,44 @@
 		  top: 10px;
 		  right: 10px;
 		}
+		
+		.barchart{
+			float: left;
+			width: 620px;
+			margin: 20px;
+			padding: 20px;
+			background-color: #262628;
+			box-shadow: 3px 3px 6px #000;
+		}
+		
+		.locator{
+			float:left;
+			width: 600px;
+			margin: 20px 20px 20px 0;
+			padding: 20px;
+			background-color: #262628;
+			box-shadow: 3px 3px 6px #000;
+		}
         </style>
     </head>
     <body>
-        <div class="graph"></div>
-		
+	<h1>DJ Dashboard</h1>
+        <div class="graph"><h2>Timeline</h2></div>
+		<div class="barchart"><h2>Satisfaction</h2></div>
+		<div class="locator"><h2>Engagement</h2></div>
 
         <script src="http://d3js.org/d3.v3.min.js"></script>
 		<script src="js/lineChart.js"></script>
 		<script src="js/barChart.js"></script>
 		<script src="js/emotionsData.js"></script>
+		<script src="js/wifiData.js"></script>
+		<script src="js/locator.js"></script>
         <script>
 		
 		
 
 		var foo = new EmotionsData;
+		var bar = new WifiData;
 
 		function RollingAverage(data){
 			var sum = 0;
@@ -125,7 +175,7 @@
 					default:;
 				}
 			});
-			console.log(hist);
+			//console.log(hist);
 			return hist;
 		};
 		
@@ -135,6 +185,8 @@
 			
 		
 		BarChart();
+		
+		Locator();
 			
         </script>
     </body>

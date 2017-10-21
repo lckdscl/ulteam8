@@ -1,8 +1,8 @@
 function BarChart(){
 			
-			var margin = {top: 20, right: 20, bottom: 30, left: 40},
-				width = 960 - margin.left - margin.right,
-				height = 500 - margin.top - margin.bottom;
+			var margin = {top: 0, right: 0, bottom: 0, left: 0},
+				width = 600 - margin.left - margin.right,
+				height = 300 - margin.top - margin.bottom;
 
 			var formatPercent = d3.format(".0%");
 
@@ -23,7 +23,7 @@ function BarChart(){
 				.tickValues([])
 				.tickFormat(formatPercent);
 
-			var svg = d3.select("body").append("svg")
+			var svg = d3.select('.barchart').append("svg")
 				.attr("width", width + margin.left + margin.right)
 				.attr("height", height + margin.top + margin.bottom)
 			  .append("g")
@@ -79,7 +79,7 @@ function BarChart(){
 			  function change() {
 				clearTimeout(sortTimeout);
 
-				console.log("test");
+				
 				y.domain([0, d3.sum(data, function(d) { return d.number; })]);
 				
 				// Copy-on-write since tweens are evaluated after a delay.
