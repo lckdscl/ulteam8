@@ -5,7 +5,9 @@
 
         <style>
         body {
-			background-color: #111;
+			margin: 0;
+			padding: 0;
+			background-color: #222;
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         }
 
@@ -42,7 +44,7 @@
 		.axis path,
 		.axis line {
 		  fill: none;
-		  stroke: #fff;
+		  stroke: #222;
 		  shape-rendering: crispEdges;
 		}
 
@@ -78,8 +80,8 @@
 
 		function RollingAverage(data){
 			var sum = 0;
-			var num = data.slice(-10,).length;
-			data.slice(-10,).forEach(function(element){
+			var num = data.slice(-5,).length;
+			data.slice(-5,).forEach(function(element){
 				sum += element.Value;
 			});
 			if(num == 0){
