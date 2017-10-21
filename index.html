@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <style>
+        body {
+			background-color: #111;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        .graph .axis {
+            stroke-width: 1;
+        }
+
+        .graph .axis .tick line {
+            stroke: white;
+        }
+
+        .graph .axis .tick text {
+            fill: white;
+            font-size: 0.7em;
+        }
+
+        .graph .axis .domain {
+            fill: none;
+            stroke: white;
+        }
+
+        .graph .group {
+            fill: none;
+            stroke: white;
+            stroke-width: 1.5;
+        }
+		
+		
+		
+		.axis text {
+		  font: 10px sans-serif;
+		}
+
+		.axis path,
+		.axis line {
+		  fill: none;
+		  stroke: #fff;
+		  shape-rendering: crispEdges;
+		}
+
+		.bar {
+		  fill: steelblue;
+		  fill-opacity: .9;
+		}
+
+		.x.axis path {
+		  display: none;
+		}
+
+		label {
+		  position: absolute;
+		  top: 10px;
+		  right: 10px;
+		}
+        </style>
+    </head>
+    <body>
+        <div class="graph"></div>
+		
+
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+		<script src="js/lineChart.js"></script>
+		<script src="js/barChart.js"></script>
+		<script src="js/emotionsData.js"></script>
+        <script>
+		
+		
+
+		var foo = new EmotionsData;
+
+		function RollingAverage(data){
+			var sum = 0;
+			var num = data.slice(-10,).length;
+			data.slice(-10,).forEach(function(element){
+				sum += element.Value;
+			});
+			if(num == 0){
+			rollingAverage = 0;
+			} else {
+			rollingAverage = sum/num;
+			}
+			//console.log(rollingAverage);
+			return rollingAverage;
+		};
+		
+		function Histogram(data){
+			var hist = [
+			{
+				emotion: "SuperHappy",
+				number: 4,
+				color: 'green'
+			},
+			{
+				emotion: "Moderate",
+				number: 5,
+				color: 'yellow'
+			},
+			{
+				emotion: "Disgusted",
+				number: 2,
+				color: 'red'
+			}			
+			];
+			data.slice(-100,).forEach(function(element){
+				switch(element.Value){
+					case 3:
+						hist[0].number+=1;
+						break;
+					case 2:
+						hist[1].number+=1;
+						break;
+					case 1:
+						hist[2].number+=1;
+						break;
+					default:;
+				}
+			});
+			console.log(hist);
+			return hist;
+		};
+		
+		
+		LineChart();
+			
+			
+		
+		BarChart();
+			
+        </script>
+    </body>
+</html>
