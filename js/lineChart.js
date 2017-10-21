@@ -1,11 +1,12 @@
 function LineChart(){
 			
 	var limit = 60 * 1,
-		duration = 750,
-		now = new Date(Date.now() - duration)
+		duration = 6000,
+		now = new Date(Date.now() - duration),
+		start = Date.now();
 
-	var width = 500,
-		height = 200
+	var width = document.documentElement.clientWidth,
+		height = 300
 
 	var groups = {
 		current: {
@@ -81,6 +82,7 @@ function LineChart(){
 
 		// Shift domain
 		x.domain([now - (limit - 2) * duration, now - duration])
+		//x.domain([start, now - duration])
 
 		// Slide x-axis left
 		axis.transition()
@@ -94,6 +96,7 @@ function LineChart(){
 			.duration(duration)
 			.ease('linear')
 			.attr('transform', 'translate(' + x(now - (limit - 1) * duration) + ')')
+			//.attr('transform', 'scale(' + x(now - (limit - 1) * duration) + ')')
 			.each('end', tick)
 
 		// Remove oldest data point from each group

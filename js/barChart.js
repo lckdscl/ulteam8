@@ -14,11 +14,13 @@ function BarChart(){
 
 			var xAxis = d3.svg.axis()
 				.scale(x)
+				.tickValues([])
 				.orient("bottom");
 
 			var yAxis = d3.svg.axis()
 				.scale(y)
 				.orient("left")
+				.tickValues([])
 				.tickFormat(formatPercent);
 
 			var svg = d3.select("body").append("svg")
@@ -30,7 +32,7 @@ function BarChart(){
 			var data = Histogram(foo.data);
 
 			  x.domain(data.map(function(d) { return d.emotion; }));
-			  y.domain([0, 50]);
+			  y.domain([0, 1]);
 
 			  svg.append("g")
 				  .attr("class", "x axis")
@@ -40,12 +42,12 @@ function BarChart(){
 			  svg.append("g")
 				  .attr("class", "y axis")
 				  .call(yAxis)
-				.append("text")
+				/*.append("text")
 				  .attr("transform", "rotate(-90)")
 				  .attr("y", 6)
 				  .attr("dy", ".71em")
 				  .style("text-anchor", "end")
-				  .text("#");
+				  .text("#");*/
 
 			  svg.selectAll(".bar")
 				  .data(data)
