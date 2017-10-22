@@ -15,7 +15,7 @@
 		
 		h1{
 			margin:0;
-			padding: 20px 20px 20px 30px;
+			padding: 10px 20px 10px 30px;
 			font-family: 'Bree Serif', cursive;
 			font-size: 175%;
 			color: #fff;
@@ -128,23 +128,31 @@
 		#satisfaction{
 			color: yellow;
 			}
+		#walking{
+			color: green;
+			}
+		#ade{
+			margin: 20px 0 0 0;
+		}
         </style>
     </head>
     <body>
-	<h1>DJ Dashboard</h1>
-        <div class="graph"><h2>Timeline</h2><p class="legend"><span id="heartbeat">HeartBeat</span><br><span id="satisfaction">Satisfaction</span></p></div>
+	<h1><img src="images/logo.png" width="200px"></h1>
+        <div class="graph"><h2>Timeline</h2><p class="legend"><span id="heartbeat">HeartBeat</span><br><span id="satisfaction">Satisfaction</span><br><span id="walking">Movement</span></p></div>
 		<div class="barchart"><h2>Satisfaction</h2></div>
 		<div class="locator"><h2>Engagement</h2>
 		<img id="dj" src="images/dj.svg" width="100px">
 		
 		</div>
-
+		<img id="ade" src="images/ade.jpg" height="300">
+		
         <script src="http://d3js.org/d3.v3.min.js"></script>
 		<script src="js/lineChart.js"></script>
 		<script src="js/barChart.js"></script>
 		<script src="js/emotionsData.js"></script>
 		<script src="js/wifiData.js"></script>
 		<script src="js/heartRateData.js"></script>
+		<script src="js/walkingData.js"></script>
 		<script src="js/locator.js"></script>
         <script>
 		
@@ -153,7 +161,7 @@
 		var foo = new EmotionsData;
 		var bar = new WifiData;
 		var boo = new HeartRateData;
-		
+		var far = new WalkingData;
 		
 		function RollingAverage(data){
 			var sum = 0;
@@ -169,6 +177,8 @@
 			//console.log(rollingAverage);
 			return rollingAverage;
 		};
+	
+		
 		
 		function Histogram(data){
 			var hist = [

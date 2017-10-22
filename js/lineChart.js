@@ -1,7 +1,7 @@
 function LineChart(){
 			
 	var limit = 60 * 1,
-		duration = 6000,
+		duration = 3000,
 		now = new Date(Date.now() - duration),
 		start = Date.now();
 
@@ -25,7 +25,7 @@ function LineChart(){
 		},
 		output: {
 			value: 0,
-			color: 'yellow',
+			color: 'green',
 			data: d3.range(limit).map(function() {
 				return 0
 			})
@@ -84,7 +84,7 @@ function LineChart(){
 					group.data.push(RollingAverage(foo.data));
 					break;
 				default:
-					group.data.push(RollingAverage(foo.data));
+					group.data.push(far.data[far.data.length-1].Steps/10*3);
 			} 
 			group.path.attr('d', line)
 		}
